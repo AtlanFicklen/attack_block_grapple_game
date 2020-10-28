@@ -1,0 +1,122 @@
+@font-face {
+    font-family: fontStreetFighter;
+    src: url(./assets/SSF4\ ABUKET.ttf);
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+
+#game_header {
+    font-family: fontStreetFighter;
+    color: red;
+    background-color: black;
+    text-align: center;
+}
+
+#welcome {
+    font-size: x-large;
+}
+
+#game_header a{
+    font-size: small;
+}
+
+
+
+
+
+#name_and_rules {
+    font-family: fontStreetFighter;
+    display: flex;
+    text-align: center;
+}
+
+#name_input {
+    width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#rules {
+    width: 55%;
+    margin-right: 5%;
+    font-size: smaller;
+}
+
+
+
+
+
+
+
+
+
+#stage_and_announcer {
+    display: flex;
+}
+
+
+#stage {
+    width: 60%;
+    background-image: url(./assets/background.png);
+    background-size: cover;
+    display: flex;
+}
+
+#userCharacter {
+    height: 100px;
+    margin-left: 15%;
+    margin-top: 10%;
+}
+
+#akumaCharacter {
+    height: 110px;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+
+
+#announcer {
+    width: 40%;
+}
+
+
+
+
+
+#button_section {
+    display: flex;
+    width: 50%;
+    margin: auto
+}
+
+#button_section button{
+    border-radius: 100%;
+    border-color: black;
+    font-family: fontStreetFighter;
+    font-size: xx-large;
+    min-width: 70px;
+    height: 70px;
+    margin: auto;
+}
+
+#button_attack {
+    background-color: red;
+}
+
+#button_grapple {
+    background-color: green;
+}
+
+#button_block {
+    background-color: purple;
+}
+
+
+#test {
+    background-color: green;
+    width: 200px;
+}

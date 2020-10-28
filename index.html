@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header id="game_header">
+        <div id="welcome">WELCOME CHALLENGER</div>
+        
+    </header>
+
+
+
+
+
+    <main>
+
+
+
+        <div id="name_and_rules">
+
+            <div id="name_input">
+                <form>
+                    <div>
+                    <label for="user_name">ENTER YOUR NAME: </label>
+                    <input type="text" id="user_name" name="name" required>
+                    <span class="validity"></span>
+                    </div>
+                    <div>
+                    <button id="start_button">START MATCH</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="rules">
+                <p>WELCOME CHALLENGER</p>
+                <p>FIRST FIGHTER TO 3 POINTS WINS</p>
+                <p>BEGIN WHEN YOU ARE READY</p>
+            </div>
+
+        </div>
+
+
+
+        <div id="stage_and_announcer">
+
+
+            <div id="stage">
+                <img id="userCharacter" src="./assets/sprite_chun-li_ready.png" alt="character's sprite">  
+                <img id="akumaCharacter" src="./assets/sprite_akuma_ready.png" alt="akuma's sprite">
+            </div>
+
+            <div id="announcer">
+                <p id="announcment">have a good clean match</p>
+            </div>
+
+        </div>
+
+        <img id="test" src="./assets/graph_AGB.png" alt="character's sprite"> 
+
+
+
+    </main>
+
+
+    <script>
+
+        userName = document.getElementById("user_name").value;
+        var yourWinCount = 0;
+        var computerWinCount = 0;
+        
+    //Computer chooses a random move/action
+        let computerMakesChoice = () => {
+            let computerChoice = Math.floor(Math.random()*3);
+            if (computerChoice===0) {
+                return 'attack';
+            } else if (computerChoice===1) {
+                return 'grapple';
+            } else {
+                return 'block';
+            } 
+
+        }
+
+        
+    
+    //User Chooses a move/action 
+        let userMakesChoice = () => {
+            var userChoice = prompt("What action will you take?").toLowerCase();
+
+            if (userChoice ==='attack' || userChoice ==='grapple' || userChoice ==='block') {
+                alert(userChoice);
+                return userChoice;
+            } else {
+                alert(`Well you can't just stand there ${document.getElementById("user_name").value}`);
+                userMakesChoice();
+            }    
+        }
+
+        
+    
+    //Fight action 
+        let theFight = (userMakesChoice, computerMakesChoice) => {
+            if (userMakesChoice===computerMakesChoice) {
+                document.getElementById("announcment").value = "TIE!";
+                //return alert('match is tie');
+            }
+            
+            else if (userMakesChoice==='attack') {
+                if (computerMakesChoice==='block') {
+
+                    alert("akuma plus 1 ");
+                    computerWinCount++;
+                    return 'The computer wins a point';
+                } else {
+                    
+                    alert(" you plus 1");
+                    yourWinCount++;
+                    return 'The user wins a point';
+                }
+            }
+
+           else if (userMakesChoice==='grapple') {
+                if (computerMakesChoice==='attack') {   
+                    alert("akuma plus 1 ")
+                     computerWinCount++;
+                     return 'the COmputer wins this round';
+                } else {
+                    alert(" you plus 1");
+                    yourWinCount++;
+                    return 'the user wins this round';
+                }
+            }
+
+            else {
+    
+                if (computerMakesChoice==='grapple') {
+                    
+                    alert("akuma plus 1 ");
+                    computerWinCount++;
+                    return 'the compjuter wins a point';
+                } else {
+                    
+                    alert(" you plus 1");
+                    yourWinCount++;
+                    return 'the user wins a point';
+                }
+            }
+            
+            
+        }
+    
+    
+        function theResults() {
+            if (yourWinCount===3) {
+                alert(`CONGRATULATIONS CHALLENGER ${userName}, YOU WIN!`)
+                function winnerChange() {
+                    document.getElementById("announement").src = "assets\sprite_chun-li_won.png";
+                    document.getElementById("userCharacter").src = "assets\sprite_akuma_lost.png";
+                }
+            } else {
+                alert(`YOU LOSE ${user_name}!`)
+                function loserChange() {
+                    document.getElementById("userCharacter").src = "assets\sprite_chun-li_lost.png";
+                    document.getElementById("userCharacter").src = "assets\sprite_akuma_won.png";
+                }
+            }
+        }
+        
+    
+        function startMatch() {
+    
+            
+            while (yourWinCount < 3 && computerWinCount < 3) {
+
+                theFight(userMakesChoice(), computerMakesChoice());
+
+
+                alert(yourWinCount);
+                alert(computerWinCount);
+        
+            }
+    
+            theResults();
+            
+        }
+    
+    
+        document.getElementById("start_button").onclick = startMatch();
+        
+        </script>
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
